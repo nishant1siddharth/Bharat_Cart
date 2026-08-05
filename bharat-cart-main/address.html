@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Details Form</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="sportwear.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            opacity: 1;
+            transition: opacity 0.5s ease-in-out;
+        }
+        .form-container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 50px;
+            border: 5px solid #a11818;
+            border-radius: 10px;
+            background-color: #f6fbfe;
+        }
+        .form-container h2 {
+            text-align: center;
+            color: #68411e;
+            font-size: 30px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input, 
+        .form-group select, 
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .form-group textarea {
+            resize: vertical;
+        }
+        .submit-btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        .submit-btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <img src="logo-fotor-2024092075213.png" alt="Bharat Cart Logo" class="logo">
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="clothing.html">Clothing</a></li>
+                    <li><a href="gadget.html">Gadgets</a></li>
+                    <li><a href="sports.html">Sports</a></li>
+                    <li><a href="grocery.html">Groceries</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </nav>
+            <div class="search-bar">
+                <input type="text" placeholder="Search for footwear...">
+                <button type="submit">Search</button>
+            </div>
+        </div>
+    </header>
+<section>
+
+    <div class="form-container">
+        <h2>Customer Details</h2>
+        <form id="customerForm" action="/submit" method="POST" onsubmit="return handleSubmit(event);">
+            <div class="form-group">
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="address">Shipping Address:</label>
+                <textarea id="address" name="address" rows="4" required></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="city">City:</label>
+                <input type="text" id="city" name="city" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="state">State:</label>
+                <input type="text" id="state" name="state" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="zip">PIN Code:</label>
+                <input type="text" id="zip" name="zip" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="country">Country:</label>
+                <select id="country" name="country" required>
+                    <option value="India">India</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="submit-btn">Submit</button>
+            </div>
+        </form>
+    </div>
+</section>
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault(); // Prevent the default form submission
+            // Here you can add any validation or data handling you need
+
+            // Simulate a delay for a better user experience (optional)
+            setTimeout(() => {
+                // Redirect to the new page
+                window.location.href = "payment.html";
+            }, 500); // 500ms delay
+        }
+    </script>
+
+</body>
+</html>

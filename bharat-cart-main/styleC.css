@@ -1,0 +1,366 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+h1{
+  color: black;
+  
+}
+h1, h2, h3, p {
+    margin: 10px 0;
+}
+p{
+  color: grey;
+}
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Header */
+header {
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+}
+
+.navbar .logo {
+    height: 80px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links li {
+    padding: 5px 10px;
+}
+
+.nav-links li a {
+    color: #333;
+    font-weight: 600;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.nav-links li a:hover {
+    background-color: #f0f0f0;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.search-bar input[type="text"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.search-bar button {
+    padding: 10px 15px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.search-bar button:hover {
+    background-color: #555;
+}
+
+/* Hero Banner */
+.hero-banner {
+    background: url('clothing.png') no-repeat center center/cover;
+    height: 650px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.hero-content p {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.cta-btn {
+    background-color: #ff4c4c;
+    color: #fff;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.cta-btn:hover {
+    background-color: #ff3333;
+}
+
+/* Categories Section */
+.categories {
+    padding: 50px 20px;
+    background-color: #c8c9c1;
+    text-align: center;
+}
+
+.categories h2 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 40px;
+}
+
+.categories-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.category {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 10px;
+    transition: box-shadow 0.3s ease;
+}
+
+.category:hover {
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.category img {
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.category h3 {
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.category p {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.btn {
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #555;
+}
+
+/* Featured Products */
+.featured-products {
+    padding: 50px 20px;
+    background-color: #33362abc;
+    text-align: center;
+}
+
+.featured-products h2 {
+    font-size: 2.5rem;
+    color: #0f0000;
+    margin-bottom: 40px;
+}
+
+.product-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.product-card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.product-card img {
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.product-card h3 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.product-card p {
+    font-size: 1rem;
+    color: #ff4c4c;
+    margin-bottom: 15px;
+}
+
+.buy-btn {
+    padding: 10px 20px;
+    background-color: #ff4c4c;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.buy-btn:hover {
+    background-color: #ff3333;
+}
+/* Centering Section Titles (h2) */
+section h2 {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+/* Card Container - Flexbox for Left-Right Layout */
+.deals-container, .best-sellers-container, .new-arrivals-container {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* Individual Card Styling */
+.deal-card, .product-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 400px; /* Adjust as needed */
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Card Images Positioned at the Top */
+.deal-card img, .product-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 15px; /* Space between image and text */
+}
+
+/* Card Titles (h3), Paragraphs, and Buttons Centered Below Images */
+.deal-card h3, .product-card h3 {
+    text-align: center;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.product-card p {
+    font-size: 1.1em;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.buy-btn {
+    background-color: #ff6600;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.buy-btn:hover {
+    background-color: #e65c00;
+}
+
+
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.social-media {
+    margin-bottom: 15px;
+}
+
+.social-links {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+.social-links li {
+    display: inline-block;
+}
+
+.social-links a {
+    color: #fff;
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #ff4c4c;
+}
+
+footer p {
+    margin: 10px 0;
+    font-size: 1rem;
+}
+

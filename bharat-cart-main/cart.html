@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="sportwear.css" />
+    <style>
+      /* Add some basic styling */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      th,
+      td {
+        padding: 10px;
+        text-align: center;
+        border: 1px solid #ddd;
+      }
+      .cart-summary {
+        text-align: right;
+        margin-top: 20px;
+      }
+      .cart-summary h2 {
+        display: inline-block;
+        margin-right: 20px;
+      }
+      .cart-summary button {
+        padding: 10px 20px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+      .cart-summary button:hover {
+        background-color: #45a049;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="navbar">
+        <img
+          src="logo-fotor-2024092075213.png"
+          alt="Bharat Cart Logo"
+          class="logo"
+        />
+        <nav>
+          <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="clothing.html">Clothing</a></li>
+            <li><a href="gadget.html">Gadgets</a></li>
+            <li><a href="sports.html">Sports</a></li>
+            <li><a href="grocery.html">Groceries</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </nav>
+        <div class="search-bar">
+          <input type="text" placeholder="Search for footwear..." />
+          <button type="submit">Search</button>
+        </div>
+      </div>
+    </header>
+
+    <section>
+      <h1>Your Cart</h1>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Total</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="cart-items">
+          <!-- Cart items will be inserted here by JavaScript -->
+        </tbody>
+      </table>
+
+      <div class="cart-summary">
+        <h2>Total: $<span id="cart-total">0.00</span></h2>
+        <a href="address.html">
+          <button type="button">Proceed to Checkout</button>
+        </a>
+      </div>
+    </section>
+
+    <script>
+      function updateCartDisplay() {
+        const cart = getCart();
+        const cartItems = document.getElementById("cart-items");
+        const cartTotal = document.getElementById("cart-total");
+
+        cartItems.innerHTML = ""; // Clear the cart display
+        let total = 0;
+
+        cart.forEach((item, index) => {
+          const totalItemPrice = item.quantity * item.price;
+          total += totalItemPrice;
+
+          const row = document.createElement("tr");
+          row.innerHTML = `
+            <td>${item.name}</td>
+            <td>${item.quantity}</td>
+            <td>$${item.price}</td>
+            <td>$${totalItemPrice.toFixed(2)}</td>
+            <td><button class="remove-btn" data-index="${index}">Remove</button></td>
+          `;
+          cartItems.appendChild(row);
+        });
+
+        cartTotal.textContent = total.toFixed(2);
+
+        // Add event listeners to remove buttons
+        document.querySelectorAll(".remove-btn").forEach((button) => {
+          button.addEventListener("click", () => {
+            const index = button.getAttribute("data-index");
+            cart.splice(index, 1);
+            saveCart(cart);
+            updateCartDisplay();
+          });
+        });
+      }
+
+      // Call the function when the cart page loads
+      window.onload = updateCartDisplay;
+      // Function to get the current cart from localStorage or return an empty array if none exists
+      function getCart() {
+        return JSON.parse(localStorage.getItem("cart")) || [];
+      }
+
+      // Function to update localStorage with the current cart
+      function saveCart(cart) {
+        localStorage.setItem("cart", JSON.stringify(cart));
+      }
+
+      // Add event listener to all "Add to Cart" buttons
+      document.querySelectorAll(".add-to-cart").forEach((button) => {
+        button.addEventListener("click", () => {
+          const productId = button.getAttribute("data-id");
+          const productName = button.getAttribute("data-name");
+          const productPrice = button.getAttribute("data-price");
+
+          // Get the current cart
+          let cart = getCart();
+
+          // Check if the product is already in the cart
+          const existingProduct = cart.find((item) => item.id === productId);
+
+          if (existingProduct) {
+            // If the product already exists, increase the quantity
+            existingProduct.quantity += 1;
+          } else {
+            // If it's a new product, add it to the cart
+            cart.push({
+              id: productId,
+              name: productName,
+              price: parseFloat(productPrice),
+              quantity: 1,
+            });
+          }
+
+          // Save the updated cart back to localStorage
+          saveCart(cart);
+
+          // Alert or update UI (optional)
+          alert(`${productName} added to cart!`);
+        });
+      });
+
+      // Example cart data
+      const cart = [
+        { product: "Product 1", quantity: 2, price: 50 },
+        { product: "Product 2", quantity: 1, price: 75 },
+        { product: "Product 3", quantity: 3, price: 20 },
+      ];
+
+      function updateCart() {
+        const cartItems = document.getElementById("cart-items");
+        const cartTotal = document.getElementById("cart-total");
+        let total = 0;
+        cartItems.innerHTML = "";
+
+        cart.forEach((item, index) => {
+          const row = document.createElement("tr");
+          const totalItemPrice = item.quantity * item.price;
+
+          row.innerHTML = `
+                <td>${item.product}</td>
+                <td>
+                  <input type="number" value="${item.quantity}" min="1" data-index="${index}" class="quantity-input">
+                </td>
+                <td>$${item.price}</td>
+                <td>$${totalItemPrice}</td>
+                <td><button class="remove-btn" data-index="${index}">Remove</button></td>
+              `;
+
+          cartItems.appendChild(row);
+          total += totalItemPrice;
+        });
+
+        cartTotal.textContent = total.toFixed(2);
+      }
+
+      function setupCart() {
+        // Update cart when quantity changes
+        document.body.addEventListener("input", (e) => {
+          if (e.target.classList.contains("quantity-input")) {
+            const index = e.target.dataset.index;
+            const newQuantity = parseInt(e.target.value);
+            cart[index].quantity = newQuantity;
+            updateCart();
+          }
+        });
+
+        // Remove item from cart
+        document.body.addEventListener("click", (e) => {
+          if (e.target.classList.contains("remove-btn")) {
+            const index = e.target.dataset.index;
+            cart.splice(index, 1);
+            updateCart();
+          }
+        });
+
+        // Proceed to checkout
+        document
+          .getElementById("checkout-btn")
+          .addEventListener("click", () => {
+            alert("Proceeding to checkout...");
+          });
+
+        updateCart();
+      }
+
+      // Initialize cart setup on page load
+      window.onload = setupCart;
+    </script>
+  </body>
+</html>
